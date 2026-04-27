@@ -77,7 +77,7 @@ namespace Erazof.WebApp.Controllers
                         }
 
                         // Si todo salió bien, redirigimos
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index", "Usuario");
                     }
                     else
                     {
