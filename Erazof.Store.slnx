@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Erazof.Application/Erazof.Application.csproj" Id="d5d69025-084a-487c-aa82-ff1ac31b2211" />
+  <Project Path="Erazof.Domain/Erazof.Domain.csproj" />
+  <Project Path="Erazof.Infrastructure/Erazof.Infrastructure.csproj" />
+  <Project Path="Erazof.Test/Erazof.Test.csproj" />
+  <Project Path="Erazof.WebApp/Erazof.WebApp.csproj" Id="a0a03795-7c27-4280-995d-1fbd425b3fd7" />
+</Solution>

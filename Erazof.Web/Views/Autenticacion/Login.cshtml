@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Erazof.Application.DTOs.Request.LoginRequest
+
+<html>
+    <body>
+
+    <h2>Login GamesFull</h2>
+
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:red">@ViewBag.Error</p>
+    }
+
+    <form asp-action="Login" method="post">
+        <div>
+            <label>Usuario o Email:</label><br />
+            <input asp-for="UserOrEmail" required />
+        </div>
+        <br />
+        <div>
+            <label>Contraseña:</label><br />
+            <input asp-for="Password" type="password" required />
+        </div>
+        <br />
+        <button type="submit">Entrar</button>
+    </form>
+
+    </body>
+</html>
+
+

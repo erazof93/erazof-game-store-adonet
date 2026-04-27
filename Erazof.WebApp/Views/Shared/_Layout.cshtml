@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/styleCabecera.css" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Estilos de Swiper -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <!-- Estilos css -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+
+</head>
+<body>
+
+ 
+<nav class="custom-nav">
+    <div class="nav-container">
+        
+        <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/2780/2780137.png" alt="Game Console" width="50" height="50">
+            <h2>Gamezof</h2>
+        </div>
+
+        
+        <ul class="nav-links">
+            <li><a href="">Inicio</a></li>
+            <li><a href="">Catálogo</a></li>
+            <li><a href="">Registro</a></li>
+
+            <!-- ADMIN EMPIEZA BOTON -->
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("2"))
+                {
+                    <li><a href="/Juegos/Insertar">Agregar Juegos</a></li>
+                }
+
+                <a href="/Autenticacion/Logout" class="btn btn-primary btn-lg shadow">
+                    <i class="bi bi-list-ul"></i> Cerrar Sesión
+                </a>
+            }
+            <!-- ADMIN TERMINAR BOTON  -->
+
+
+        </ul>
+        <!-- Iconos y Usuario -->
+        <div class="nav-actions">
+            <a href="canasta.jsp" class="cart-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="badge">0</span>
+            </a>
+            
+            <i class="fa-solid fa-magnifying-glass search-trigger"></i>
+
+            <!-- Dropdown Usuario -->
+            <div class="user-dropdown">
+                <div class="user-trigger">
+                    <i class="fa-solid fa-user"></i>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span>hola @User.Identity.Name</span>
+                    }
+
+                </div>
+                
+                <ul class="dropdown-content">
+
+                    <!-- Empieza el dropdown despliegue -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                    <li class="user-info">
+                            <img @* onerror="this.src='imagenes/profileUser.png'"  *@src="imagenes/userLog.png" alt="foto">
+
+                            <div class="user-email">@User.FindFirst(System.Security.Claims.ClaimTypes.Name)?.Value</div> <!-- trae el email-->
+                        
+                            <div class="user-email">@User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value</div> <!-- trae el email-->
+                    </li>
+                        <hr>
+                        <li><a href=""><i class="fa-regular fa-user"></i> Actualizar datos</a></li>
+                        <li><a href=""><i class="fa-regular fa-circle-question"></i> Ayuda</a></li>
+                        <hr>
+                    }
+                    else
+                    {
+                        <li class="user-info">
+                            <img src="imagenes/profileUser.png" alt="foto">
+                        
+                            <div class="user-email">Logeate</div> <!-- trae el email-->
+                        </li>
+                        <hr>
+                        <li><a href=""><i class="fa-regular fa-circle-question"></i> Ayuda</a></li>
+                        <hr>
+                        
+                    }
+                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href="Autenticacion/Logout" class="logout">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="Autenticacion/Login" class="login ">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i> Inicia Sesion
+                            </a>
+                        </li>
+                    }
+                    <!-- Termina el dropdown -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<div>
+    @RenderBody()
+</div>
+</body>
+</html>

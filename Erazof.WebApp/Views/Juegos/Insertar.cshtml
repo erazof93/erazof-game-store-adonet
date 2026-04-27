@@ -1,0 +1,105 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Erazof.Domain.JuegoImagen;
+
+<html>
+    <head>
+<link rel="stylesheet" href="/css/StyleIndex.css" />
+
+    </head>
+    <body>
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+@* <div class="login-box">
+    <h2>Crear cuenta</h2>
+
+    <form asp-action="Insertar" method="post" enctype="multipart/form-data">
+
+        <div class="input-group">
+            <input name="titulo" type="text" placeholder="titulo" required />
+        </div>
+
+        <div class="input-group">
+            <input name="descripcion" type="text" placeholder="Descripcion" required />
+        </div>
+
+        <div class="input-group">
+            <input name="precio" type="number" placeholder="Precio" required />
+        </div>
+
+        <div class="mb-3">
+            <label>Foto del Empleado</label>
+            <input type="file" name="imagen" class="form-control" accept="image/*" />
+        </div>
+
+        @foreach (var genero in Model.Generos)
+        {
+            <div>
+                <input type="checkbox" name="GenerosSeleccionados" value="@genero.GeneroID" />
+                <label>@genero.NombreGenero</label>
+            </div>
+        }
+
+        <button type="submit">Registrar Juego</button>
+
+    </form> *@
+
+<div class="auth-container">
+
+<div class="auth-card">
+<h2 class="auth-title">Agregar Juego</h2>
+
+<form asp-action="Insertar" method="post" enctype="multipart/form-data" class="auth-form">
+
+<!-- INPUTS -->
+<div class="form-group">
+    <input name="titulo" type="text" placeholder="Título" class="form-input" required />
+</div>
+
+<div class="form-group">
+    <input name="descripcion" type="text" placeholder="Descripción" class="form-input" required />
+</div>
+
+<div class="form-group">
+    <input name="precio" type="number" placeholder="Precio" class="form-input" required />
+</div>
+
+<!-- FILE -->
+<div class="form-group file-group">
+    <label class="form-label">Imagen del juego</label>
+    <input type="file" name="imagen" class="form-file" accept="image/*" />
+</div>
+
+<!-- CHECKBOX -->
+<div class="form-group">
+    <p class="form-label">Géneros</p>
+
+    <div class="checkbox-group">
+        @foreach (var genero in Model.Generos)
+        {
+            <label class="checkbox-item">
+                <input type="checkbox" name="GenerosSeleccionados" value="@genero.GeneroID" />
+                <span>@genero.NombreGenero</span>
+            </label>
+        }
+    </div>
+</div>
+
+<!-- BUTTON -->
+<button type="submit" class="btn-submit">Registrar Juego</button>
+
+</form>
+</div>
+
+</div>
+</div>
+    </body>
+</html>
+
+

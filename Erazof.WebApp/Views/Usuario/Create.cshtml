@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Erazof.Domain.Usuario;
+
+<html>
+<head>
+        <link rel="stylesheet" href="/css/styleLogin.css" />
+</head>
+    <body>
+    <div class="login-box">
+        <h2>Crear cuenta</h2>
+
+        <form asp-action="Create" method="post">
+
+            <div class="input-group">
+                <input name="Username" placeholder="Usuario" required />
+            </div>
+
+            <div class="input-group">
+                <input name="Email" type="email" placeholder="Correo" required />
+            </div>
+
+            <div class="input-group">
+                <input name="Password" type="password" placeholder="Contraseña" required />
+            </div>
+
+            <button type="submit">Registrarse</button>
+
+            
+
+        </form>
+        <p class="register">
+            <a href="/Autenticacion/Login">¿Ya tienes cuenta?</a>
+        </p>
+        @if (ViewBag.Error != null)
+        {
+            <p style="color:red">@ViewBag.Error</p>
+        }
+    </div> 
+
+
+    </body>
+</html>

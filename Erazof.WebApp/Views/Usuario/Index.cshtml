@@ -1,0 +1,167 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+}
+@* @model List<Erazof.Domain.Genero>  *@
+	@model Erazof.WebApp.Models.HomeViewModel;
+
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5 text-center">
+
+
+	<div class="contenedor-generos">
+    @foreach (var g in Model.ListaGeneros)
+    {
+		<div class="padre-section">
+			<section>
+				<div class="section">
+					<div class="cabecera-section">
+						<p>@g.NombreGenero</p>
+						<p>@g.GeneroID</p>
+						<div class="swiper mySwiper">
+							<div class="swiper-wrapper">
+							@foreach (var c in Model.ListaSwiper)
+							{
+								@if (c.generoid == g.GeneroID)
+								{
+									<div class="swiper-slide">
+										@if(c.portada==true){
+											<div class="prueba">
+												<a href="#?=@c.juegoid" class="pruebaenlace">
+														<img src="@c.url" class="pruebaimg" />			
+												</a>
+											</div>
+										}
+
+									</div>
+								}
+							}
+							</div>
+							<div class="swiper-button-next"></div>
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+				</div>
+
+			</section>	
+		</div>
+        @* <div class="tarjeta-genero" id="genero-@item.GeneroID" data-id="@item.GeneroID">
+            <h3>@item.NombreGenero</h3>
+            <p>ID del Género: @item.GeneroID</p>
+            <button onclick="seleccionarGenero(@item.GeneroID)">Ver más</button>
+        </div> *@
+    }
+</div>
+
+
+		<!-- Scripts Swiper -->
+	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+	<script>
+		var swiper = new Swiper(".mySwiper", {
+			slidesPerView : 5,
+			spaceBetween : 30,
+			freeMode : true,
+		});
+	</script>
+
+	<style>
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+.padre-section {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.padre-section p {
+	color: #4388a2;
+}
+
+.section {
+	margin-bottom: 40px;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: 12px;
+}
+
+
+.cabecera-section {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+	width: 100%;
+	padding: 0 20px;
+}
+
+/* SWIPER */
+.swiper {
+	width: 95%;
+	max-width: 1600px;
+	margin: 0 auto;
+}
+
+.swiper-wrapper {
+	padding: 20px 40px;
+	border-radius: 20px;
+	height: 350px;
+}
+
+.swiper-slide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.prueba {
+	position: relative;
+	width: 200px;
+	height: 300px;
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+	transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.prueba:hover {
+	transform: scale(1.05);
+	box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
+}
+
+.pruebaenlace {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.pruebaimg {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 16px;
+}
+</style>
+
+
+
+	<!-- boostrap -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

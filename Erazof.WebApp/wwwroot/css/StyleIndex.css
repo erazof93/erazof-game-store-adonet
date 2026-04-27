@@ -1,0 +1,123 @@
+﻿
+/* CONTENEDOR GENERAL */
+.auth-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #083c42, #021f24);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* TARJETA */
+.auth-card {
+    background: #0b2d36;
+    padding: 40px;
+    border-radius: 20px;
+    width: 380px;
+    box-shadow: 0 0 40px rgba(0,255,200,0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+/* TITULO */
+.auth-title {
+    text-align: center;
+    color: white;
+    margin-bottom: 25px;
+}
+
+/* FORM */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* GRUPOS */
+.form-group {
+    margin-bottom: 18px;
+}
+
+/* INPUT */
+.form-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #1bc9c9;
+    background: transparent;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+    .form-input::placeholder {
+        color: #7aaeb5;
+    }
+
+    .form-input:focus {
+        border-bottom: 2px solid #00ffcc;
+        box-shadow: 0 5px 10px rgba(0,255,200,0.2);
+    }
+
+/* LABEL */
+.form-label {
+    color: #cfe8ec;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* FILE */
+.form-file {
+    color: #cfe8ec;
+}
+
+/* CHECKBOX */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #cfe8ec;
+    font-size: 13px;
+}
+
+    .checkbox-item input {
+        accent-color: #00ffcc;
+    }
+
+/* BOTON */
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background: #17b26a;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .btn-submit:hover {
+        background: #14a05f;
+        box-shadow: 0 5px 20px rgba(23,178,106,0.4);
+        transform: translateY(-2px);
+    }
+
+/* ANIMACION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

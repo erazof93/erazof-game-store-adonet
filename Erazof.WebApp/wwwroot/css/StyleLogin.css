@@ -1,0 +1,100 @@
+﻿body {
+    background: linear-gradient(135deg, #071f26, #0b2d36);
+    font-family: Arial, sans-serif;
+}
+
+/* CONTENEDOR */
+.login-box {
+    width: 320px;
+    margin: 100px auto;
+    padding: 30px;
+    background: #0b2d36;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    color: white;
+}
+
+
+    .login-box h2 {
+        margin-bottom: 25px;
+    }
+
+/* INPUTS */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+    .input-group input {
+        width: 100%;
+        padding: 12px 5px;
+        border: none;
+        border-bottom: 2px solid #1fa3a3;
+        background: transparent;
+        color: white;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+     /* EFECTO FOCUS */
+    .input-group input:focus {
+        border-bottom: 2px solid #17b26a;
+        box-shadow: 0 5px 10px rgba(23, 178, 106, 0.3);
+    }
+
+
+/* BOTÓN */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #17b26a;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    /* Hover pro */
+    button:hover {
+        background: #14a05f;
+        transform: scale(1.03);
+        box-shadow: 0 5px 15px rgba(23, 178, 106, 0.5);
+    }
+
+    /* Click efecto */
+    button:active {
+        transform: scale(0.97);
+    }
+
+/* TEXTO */
+.register {
+    margin-top: 18px;
+    text-align: center;
+    color: #7aaeb5;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+    .register:hover {
+        color: #17b26a;
+    }
+
+
+.login-box h2 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* link */
+.register a {
+    color: #7aaeb5;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+    .register a:hover {
+        color: #17b26a;
+    }
