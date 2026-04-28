@@ -106,5 +106,12 @@ namespace Erazof.WebApp.Controllers
             var biblioteca = await _juegoService.listaBibliotecaJuegos();
             return Ok(biblioteca);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Detalle(int id)
+        {
+            // temporal para probar que recibe el id
+            return Content($"ID recibido: {id}");
+        }
     }
 }
