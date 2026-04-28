@@ -38,6 +38,11 @@ namespace Erazof.Application.Services
             return _juegosDalc.ObtenerBibliotecaUsuario();
         }
 
+        public Task<JuegoDetalle> listaJuegosDetalles(int id)
+        {
+            return _juegosDalc.ObtenerJuegoPorId(id);
+        }
+
         public Task<List<Genero>> listarGenero()
         {
             return _juegosDalc.listarGenero() ;

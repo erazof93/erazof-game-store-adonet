@@ -110,8 +110,12 @@ namespace Erazof.WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Detalle(int id)
         {
-            // temporal para probar que recibe el id
-            return Content($"ID recibido: {id}");
+            var juego = await _juegoService.listaJuegosDetalles(id);
+            if (juego == null)
+            {
+                return NotFound();
+            }
+            return Ok(juego);
         }
     }
 }

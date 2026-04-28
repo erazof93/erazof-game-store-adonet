@@ -216,5 +216,49 @@ namespace Erazof.Infrastructure
 
 
 
+        public async Task<JuegoDetalle> ObtenerJuegoPorId(int id)
+        {
+            JuegoDetalle juego = null;
+
+            using (SqlConnection cn = DBConexion.obtenerConexion())
+            {
+                using (SqlCommand cmd = new SqlCommand("usp_Listar_Por_Id", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idJuego", id);
+                    try
+                    {
+                        await cn.OpenAsync();
+                        using (SqlDataReader dr = await cmd.ExecuteReaderAsync())
+                        {
+                            if (await dr.ReadAsync())
+                            {
+                                juego = new JuegoDetalle
+                                {
+                                    JuegoID = dr.GetInt32(0),
+                                    Titulo = dr.GetString(1),
+                                    Url = dr.GetString(2),
+                                    portada = dr.GetBoolean(3),
+                                    Precio = dr.GetDecimal(4),
+                                    FechaLanz = dr.GetDateTime(5),
+                                    Generos = dr.GetString(6)
+                                };
+                            }
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine("ERORRRRRRR *************************** " + ex.Message);
+                        throw new Exception(ex.Message);
+                    }
+                }
+            }
+            System.Diagnostics.Debug.WriteLine("****************ID CAPTURADO " + JsonSerializer.Serialize(juego));
+            return juego;
+        }
+
+
+
     }
 }
