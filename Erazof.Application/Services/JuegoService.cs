@@ -1,4 +1,5 @@
-﻿using Erazof.Application.Interfaces;
+﻿using Erazof.Application.DTOs.Response;
+using Erazof.Application.Interfaces;
 using Erazof.Domain;
 using Erazof.Infrastructure;
 using System;
@@ -30,6 +31,11 @@ namespace Erazof.Application.Services
         public Task<int> insertarJuegoImagen(JuegoImagen ji)
         {
             return _juegosDalc.insertarJuegoImagen(ji);
+        }
+
+        public Task<List<BibliotecaUsuario>> listaBibliotecaJuegos()
+        {
+            return _juegosDalc.ObtenerBibliotecaUsuario();
         }
 
         public Task<List<Genero>> listarGenero()

@@ -176,6 +176,45 @@ namespace Erazof.Infrastructure
         }
 
 
+        public async Task<List<BibliotecaUsuario>> ObtenerBibliotecaUsuario()
+        {
+            List<BibliotecaUsuario> biblioteca = new List<BibliotecaUsuario>();
+            using (SqlConnection cn = DBConexion.obtenerConexion())
+            {
+                using (SqlCommand cmd = new SqlCommand("usp_Lista_Biblioteca", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    try
+                    {
+                        await cn.OpenAsync();
+                        using (SqlDataReader dr = await cmd.ExecuteReaderAsync())
+                        {
+                            while (await dr.ReadAsync())
+                            {
+                                biblioteca.Add(new BibliotecaUsuario()
+                                {
+                                    UserId = dr.GetInt32(0),
+                                    UserName = dr.GetString(1),
+                                    Email = dr.GetString(2),
+                                    GameID = dr.GetInt32(3),
+                                    titulo = dr.GetString(4),
+                                    precio = dr.GetDecimal(5),
+                                    FechaCompra = dr.GetDateTime(6)
+                                });
+                            }
+                        }
+                        System.Diagnostics.Debug.WriteLine("**************** lista de biblioteca: " + JsonSerializer.Serialize(biblioteca));
+                        return biblioteca;
+                    }
+                    catch (SqlException ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+            }
+        }
+
+
 
     }
 }

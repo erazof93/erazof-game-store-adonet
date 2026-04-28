@@ -1,4 +1,5 @@
-﻿using Erazof.Domain;
+﻿using Erazof.Application.DTOs.Response;
+using Erazof.Domain;
 using Erazof.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Erazof.Application.Interfaces
         Task<int> insertarJuego(Juego juego);
         Task<int> insertarJuegoImagen(JuegoImagen ji);
         Task insertarJuegoGenero(int juegoId, int generoId);
+        Task<List<BibliotecaUsuario>> listaBibliotecaJuegos();
 
 
     }

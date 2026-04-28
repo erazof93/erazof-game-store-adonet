@@ -98,5 +98,13 @@ namespace Erazof.WebApp.Controllers
             return View(juego);
 
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Biblioteca()
+        {
+            var biblioteca = await _juegoService.listaBibliotecaJuegos();
+            return Ok(biblioteca);
+        }
     }
 }
