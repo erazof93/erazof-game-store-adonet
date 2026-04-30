@@ -77,13 +77,18 @@ namespace Erazof.Infrastructure
                         await cn.OpenAsync();
                         await cmd.ExecuteNonQueryAsync();
                         resultado = (int)pId.Value;
-                        //Console.WriteLine("**************** Usuario insertado con ID: " + resultado);
                         System.Diagnostics.Debug.WriteLine("**************** Usuario insertado con ID: " + resultado);
                         return resultado;
                     }
                     catch (SqlException ex)
                     {
-                        throw new Exception("Error en la base de datos al insertar usuario", ex);
+                        if (ex.Number == 2627 || ex.Number == 2601)
+                        {
+                            throw new Exception("DUPLICADO");
+                        }
+
+                        throw;
+                        
                     }
                 }
             }

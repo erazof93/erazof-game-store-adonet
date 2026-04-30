@@ -3,6 +3,7 @@ using Erazof.Application.Services;
 using Erazof.Domain;
 using Erazof.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 
 namespace Erazof.Web.Controllers
 {
@@ -52,12 +53,19 @@ namespace Erazof.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(Usuario usuario)
         {
-            int idGenerado = await _usuarioService.Crear(usuario);
-
-
+            try
+            {
+                await _usuarioService.Crear(usuario);
                 return RedirectToAction("Login", "Autenticacion");
-
-
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message == "DUPLICADO")
+                {
+                    ViewBag.Error = "El usuario o email ya existe";
+                }
+                return View(usuario);
+            }
         }
 
         // -----------------Modificar
