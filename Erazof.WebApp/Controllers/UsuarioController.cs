@@ -39,7 +39,7 @@ namespace Erazof.Web.Controllers
         public async Task<ActionResult> Listar()
         {
             var usuario = await _usuarioService.ListarTodos();
-            return Ok(usuario);
+            return View(usuario);
                 
         }
 
