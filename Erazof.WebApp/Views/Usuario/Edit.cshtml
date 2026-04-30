@@ -4,31 +4,44 @@
 @{
 }
 @model Erazof.Domain.Usuario
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/styleActualizar.css" />
+</head>
+<body>
 
-<form action="/Usuario/Edit" method="post">
-    @* Importante: El AntiForgeryToken es necesario si tu controlador tiene [ValidateAntiForgeryToken] *@
-    @* @Html.AntiForgeryToken() *@
+    <div class="form-container">
 
-    
-    <input type="hidden" name="UsuarioID" value="@Model.UsuarioID" />
+        <div class="login-box">
+            <h2>Editar Usuario</h2>
 
-    <div class="input-group">
-        <label>Usuario:</label>
-        <input type="text" name="Username" value="@Model.Username" placeholder="Usuario" required />
+            <form action="/Usuario/Edit" method="post">
+
+                <input type="hidden" name="UsuarioID" value="@Model.UsuarioID" />
+
+                <div class="input-group">
+                    <input type="text" name="Username" value="@Model.Username" placeholder=" " required />
+                    <label>Usuario</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" name="Email" value="@Model.Email" placeholder=" " required />
+                    <label>Correo</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" name="Password" value="@Model.Password" placeholder=" " required />
+                    <label>Contraseña</label>
+                </div>
+
+                <button type="submit">Actualizar</button>
+
+                <a href="/Usuario/Index" class="btn-cancelar">Cancelar</a>
+
+            </form>
+        </div>
+
     </div>
 
-    <div class="input-group">
-        <label>Correo:</label>
-        <input type="email" name="Email" value="@Model.Email" placeholder="Correo" required />
-    </div>
-
-    <div class="input-group">
-        <label>Contraseña:</label>
-        <input type="password" name="Password" value="@Model.Password" placeholder="Contraseña" required />
-    </div>
-
-    <div style="margin-top: 20px;">
-        <button type="submit">Actualizar</button>
-        <a href="/Usuario/Index">Cancelar</a>
-    </div>
-</form>
+</body>
+</html>
