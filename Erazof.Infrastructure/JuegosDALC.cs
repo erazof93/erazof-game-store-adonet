@@ -258,6 +258,49 @@ namespace Erazof.Infrastructure
             return juego;
         }
 
+        // ------------------- BIBLIOTECA DEL USUARIO
+
+        public async Task<List<BibliotecaUser>> ObtenerBibliotecaPorID(int id)
+        {
+            List<BibliotecaUser> listaBiblioteca = new List<BibliotecaUser>();
+
+            using (SqlConnection cn = DBConexion.obtenerConexion())
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ObtenerBibliotecaUsuario", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UsuarioID", id);
+                    try
+                    {
+                        await cn.OpenAsync();
+                        using (SqlDataReader dr = await cmd.ExecuteReaderAsync())
+                        {
+                            while (await dr.ReadAsync())
+                            {
+                                listaBiblioteca.Add(new BibliotecaUser
+                                {
+                                    JuegoID = dr.GetInt32(0),
+                                    Titulo = dr.GetString(1),
+                                    Descripcion = dr.GetString(2),
+                                    Precio = dr.GetDecimal(3),
+                                    Fechala = dr.GetDateTime(4),
+                                    FechaCompra = dr.GetDateTime(5)
+                                });
+                            }
+                        }
+        
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine("ERORRRRRRR *************************** ID " + ex.Message);
+                        throw new Exception(ex.Message);
+                    }
+                }
+            }
+            System.Diagnostics.Debug.WriteLine("****************ID CAPTURADO " + JsonSerializer.Serialize(listaBiblioteca));
+            return listaBiblioteca;
+        }
+
 
 
     }

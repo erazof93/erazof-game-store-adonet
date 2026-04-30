@@ -50,6 +50,8 @@
                     <li><a href="/Usuario/Listar">Lista de usuarios</a></li>
                 }
 
+                    <li><a href="/Juegos/Library/@User.FindFirst("UsuarioID")?.Value">Biblioteca</a></li>
+
                 <a href="/Autenticacion/Logout" class="btn btn-primary btn-lg shadow">
                     <i class="bi bi-list-ul"></i> Cerrar Sesión
                 </a>
@@ -92,7 +94,7 @@
                             <div class="user-email">@User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value</div> <!-- trae el email-->
                     </li>
                         <hr>
-                        <li><a href=""><i class="fa-regular fa-user"></i> Actualizar datos</a></li>
+                            <li><a href="Usuario/Edit/@User.FindFirst("UsuarioID")?.Value"><i class="fa-regular fa-user"></i> Actualizar datos</a></li>
                         <li><a href=""><i class="fa-regular fa-circle-question"></i> Ayuda</a></li>
                         <hr>
                     }

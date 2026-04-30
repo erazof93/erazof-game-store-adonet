@@ -117,5 +117,18 @@ namespace Erazof.WebApp.Controllers
             }
             return Ok(juego);
         }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> Library(int id)
+        {
+            var biblioteca = await _juegoService.ObtenerBibliotecaPorID(id);
+            if (biblioteca == null || biblioteca.Count == 0)
+            {
+                return NotFound();
+            }
+            return Ok(biblioteca);
+        }
     }
 }

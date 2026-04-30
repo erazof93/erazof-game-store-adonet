@@ -19,6 +19,7 @@ namespace Erazof.Application.Interfaces
         Task insertarJuegoGenero(int juegoId, int generoId);
         Task<List<BibliotecaUsuario>> listaBibliotecaJuegos();
         Task<JuegoDetalle> listaJuegosDetalles(int id);
+        Task<List<BibliotecaUser>> ObtenerBibliotecaPorID(int id);
 
 
     }

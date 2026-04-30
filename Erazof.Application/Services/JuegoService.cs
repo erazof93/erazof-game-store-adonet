@@ -52,5 +52,10 @@ namespace Erazof.Application.Services
         {
             return _juegosDalc.listarswiper();
         }
+
+        public Task<List<BibliotecaUser>> ObtenerBibliotecaPorID(int id)
+        {
+            return _juegosDalc.ObtenerBibliotecaPorID(id);
+        }
     }
 }
