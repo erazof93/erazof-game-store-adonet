@@ -48,13 +48,13 @@ namespace Erazof.Application.Services
 
         public async Task<UsuarioResponse> ValidarUsuario(LoginRequest request)
         {
-            // 1. Llamo al DALC
+            //llamada a DALC
             var user = await _usuarioDalc.obtenerPorCredenciales(request.UserOrEmail, request.Password);
 
-            // 2. Si el DALC devuelve null (no existe o clave mal)
+            // clave o suasurio no existe
             if (user == null) return null;
 
-            // 3. De Entidad "Usuario" a DTO "UsuarioResponse"
+            // De Usuario a DTO UsuarioResponse
             return new UsuarioResponse
             {
                 UsuarioID = user.UsuarioID,

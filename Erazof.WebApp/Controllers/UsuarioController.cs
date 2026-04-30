@@ -10,10 +10,10 @@ namespace Erazof.Web.Controllers
     {
         private readonly IUsuarioService _usuarioService;
         private readonly IJuegoService _juegoService;
-        public UsuarioController()
+        public UsuarioController(IUsuarioService usuarioService, IJuegoService juegoService)
         {
-            _usuarioService= new UsuarioService(); 
-            _juegoService = new JuegoService();
+            _usuarioService = usuarioService; 
+            _juegoService = juegoService;
         }
 
 
@@ -60,7 +60,32 @@ namespace Erazof.Web.Controllers
 
         }
 
+        // -----------------Modificar
+        [HttpGet]
+        public async Task<ActionResult> Edit(int id)
+        {
+            var usuario = await _usuarioService.ObtenerPorId(id);
+            if (usuario == null) return NotFound();
+            return View(usuario);
+        }
 
-        
+        [HttpPost]
+        public async Task<ActionResult> Edit(Usuario use)
+        {
+            bool actualizado = await _usuarioService.Actualizar(use);
+            if (actualizado)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("", "No se pudo actualizar el usuario. Verifique los datos.");
+            }
+            return View(use);
+        }
+
+
+
+
     }
 }

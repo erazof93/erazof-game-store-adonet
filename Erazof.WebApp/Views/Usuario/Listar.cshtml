@@ -29,9 +29,7 @@
                 <td>@usuario.FechaReg</td>
                 <td>@usuario.RolID.NombreRol</td>
                 <td>
-                    <a asp-controller="Usuario" asp-action="Edit" asp-route-id="@usuario.UsuarioID" class="btn btn-warning">
-                        Modificar
-                    </a>
+                    @Html.ActionLink("Usuario", "Edit", new { id = usuario.UsuarioID })
                 </td>
                 <td>
                     <a asp-controller="Usuario" asp-action="Delete" asp-route-id="@usuario.UsuarioID" class="btn btn-danger">
