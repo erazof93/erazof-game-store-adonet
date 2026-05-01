@@ -6,4 +6,43 @@
 
 @model List<Erazof.Domain.BibliotecaUser>
 
+@if (!Model.Any())
+{
+    <div class="empty-library">
+        <h2>No tienes juegos aún 🎮</h2>
+    </div>
+}
 
+
+
+
+<div class="library-header">
+    <h2>Mi Biblioteca</h2>
+    <p>@User.Identity.Name</p>
+</div>
+
+
+<html>
+    <head>
+    <link rel="stylesheet" href="/css/styleLibrary.css" />
+    </head>
+<body>
+
+
+    <div class="library-container">
+        @foreach (var item in Model)
+        {
+            <div class="game-card">
+                <img src="@item.url" alt="@item.Titulo" />
+                <div class="game-info">
+                    <p>@item.Titulo</p>
+                </div>
+            </div>
+        }
+        <a href="/" class="btn-volver">Volver al inicio</a>
+    </div>
+
+    
+    
+</body>
+</html>

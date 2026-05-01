@@ -284,11 +284,11 @@ namespace Erazof.Infrastructure
                                     Descripcion = dr.GetString(2),
                                     Precio = dr.GetDecimal(3),
                                     Fechala = dr.GetDateTime(4),
-                                    FechaCompra = dr.GetDateTime(5)
+                                    url = dr.GetString(5),
+                                    FechaCompra = dr.GetDateTime(6)
                                 });
                             }
                         }
-        
                     }
                     catch (Exception ex)
                     {
@@ -299,6 +299,23 @@ namespace Erazof.Infrastructure
             }
             System.Diagnostics.Debug.WriteLine("****************ID CAPTURADO " + JsonSerializer.Serialize(listaBiblioteca));
             return listaBiblioteca;
+        }
+
+        public async Task agregarJuego(int usuarioID, int juegoID)
+        {
+            using (SqlConnection cn = DBConexion.obtenerConexion())
+            {
+                using (SqlCommand cmd = new SqlCommand("usp_agregarJuegoDeUsuario", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@UsuarioID", usuarioID);
+                    cmd.Parameters.AddWithValue("@JuegoID", juegoID);
+
+                    await cn.OpenAsync();
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
         }
 
 

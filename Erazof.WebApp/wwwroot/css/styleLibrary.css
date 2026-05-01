@@ -1,9 +1,111 @@
-﻿.container {
-    display: flex;
-    gap: 150px;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+﻿/* FONDO GENERAL */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #071f26, #0b2d36);
+    color: white;
+}
+
+.library-header {
+    max-width: 1200px;
+    margin: 30px auto 10px;
+    padding: 0 40px;
+}
+
+    .library-header h2 {
+        margin: 0;
+    }
+
+    .library-header p {
+        color: #7aaeb5;
+        font-size: 14px;
+    }
+
+/* CONTENEDOR PRINCIPAL */
+.library-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 por fila */
+    gap: 25px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* CARD DEL JUEGO */
+.game-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+    /* IMAGEN */
+    .game-card img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+    }
+
+    /* EFECTO HOVER */
+    .game-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
+    }
+
+        .game-card:hover img {
+            box-shadow: 0 0 20px rgba(23, 178, 106, 0.7);
+
+        }
+
+.btn-volver {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #1fa3a3;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+    .btn-volver:hover {
+        background: #17b26a;
+        transform: scale(1.05);
+    }
+
+/* INFO (TÍTULO) */
+.game-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    text-align: center;
+}
+
+    .game-info p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+    .library-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .library-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .library-container {
+        grid-template-columns: 1fr;
+    }
 }

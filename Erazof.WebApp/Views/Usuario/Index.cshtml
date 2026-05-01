@@ -25,7 +25,6 @@
 				<div class="section">
 					<div class="cabecera-section">
 						<p>@g.NombreGenero</p>
-						<p>@g.GeneroID</p>
 						<div class="swiper mySwiper">
 							<div class="swiper-wrapper">
 							@foreach (var c in Model.ListaSwiper)
@@ -55,11 +54,6 @@
 
 			</section>	
 		</div>
-        @* <div class="tarjeta-genero" id="genero-@item.GeneroID" data-id="@item.GeneroID">
-            <h3>@item.NombreGenero</h3>
-            <p>ID del Género: @item.GeneroID</p>
-            <button onclick="seleccionarGenero(@item.GeneroID)">Ver más</button>
-        </div> *@
     }
 </div>
 

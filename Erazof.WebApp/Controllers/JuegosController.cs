@@ -115,7 +115,7 @@ namespace Erazof.WebApp.Controllers
             {
                 return NotFound();
             }
-            return Ok(juego);
+            return View(juego);
         }
 
 
@@ -126,9 +126,25 @@ namespace Erazof.WebApp.Controllers
             var biblioteca = await _juegoService.ObtenerBibliotecaPorID(id);
             if (biblioteca == null || biblioteca.Count == 0)
             {
-                return NotFound();
+                return View(new List<BibliotecaUser>());
             }
-            return Ok(biblioteca);
+            return View(biblioteca);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Comprar(int JuegoID)
+        {
+            var userId = User.FindFirst("UsuarioID")?.Value;
+
+            if (userId == null)
+                return RedirectToAction("Login", "Autenticacion");
+
+            int usuarioID = int.Parse(userId);
+
+            await _juegoService.agregarJuego(usuarioID, JuegoID);
+
+            return RedirectToAction("Library", new { id = usuarioID });
         }
     }
 }

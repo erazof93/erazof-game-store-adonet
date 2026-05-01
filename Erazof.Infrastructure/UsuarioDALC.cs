@@ -182,7 +182,6 @@ namespace Erazof.Infrastructure
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@UsuarioID", id);
-                    //output
                     SqlParameter pRespuesta = new SqlParameter("@Respuesta", SqlDbType.Bit);
                     pRespuesta.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(pRespuesta);
@@ -190,7 +189,6 @@ namespace Erazof.Infrastructure
                     {
                         await cn.OpenAsync();
                         await cmd.ExecuteNonQueryAsync();
-                        // se captura @Respuesta
                         resultado = (bool)pRespuesta.Value;
                         return resultado;
                     }

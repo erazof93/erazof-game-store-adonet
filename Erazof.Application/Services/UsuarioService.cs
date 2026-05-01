@@ -31,7 +31,7 @@ namespace Erazof.Application.Services
             return _usuarioDalc.insertarUsuario(usuario);
         }
 
-        public Task<bool> Eliminar(int id)
+        public Task<bool> eliminarUsuario(int id)
         {
             return _usuarioDalc.eliminarUsuario(id);
         }

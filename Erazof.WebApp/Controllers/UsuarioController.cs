@@ -13,7 +13,7 @@ namespace Erazof.Web.Controllers
         private readonly IJuegoService _juegoService;
         public UsuarioController(IUsuarioService usuarioService, IJuegoService juegoService)
         {
-            _usuarioService = usuarioService; 
+            _usuarioService = usuarioService;
             _juegoService = juegoService;
         }
 
@@ -41,7 +41,7 @@ namespace Erazof.Web.Controllers
         {
             var usuario = await _usuarioService.ListarTodos();
             return View(usuario);
-                
+
         }
 
         // ------------------ CREAR ------------------
@@ -93,7 +93,22 @@ namespace Erazof.Web.Controllers
         }
 
 
+        //-----------------Eliminar
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            bool eliminado = await _usuarioService.eliminarUsuario(id);
 
+            if (eliminado)
+            {
+                TempData["Success"] = "Usuario eliminado correctamente";
+            }
+            else
+            {
+                TempData["Error"] = "No se pudo eliminar el usuario";
+            }
 
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -15,12 +15,14 @@ namespace Erazof.Application.Interfaces
         Task<Usuario> ObtenerPorId(int id);
         Task<int> Crear(Usuario usuario);
         Task<bool> Actualizar(Usuario usuario);
-        Task<bool> Eliminar(int id);
+        Task<bool> eliminarUsuario(int id);
 
         // autenticacion
         Task<UsuarioResponse> ValidarUsuario(LoginRequest request);
+      
 
-        
+
+
 
     }
 }

@@ -5,38 +5,62 @@
 }
 
 @model List<Erazof.Domain.Usuario>
-<table>
-    <thead>
-        <tr>
-            <th>UsuarioID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>FechaReg</th>
-            <th>RolID</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var usuario in Model)
-        {
+
+    <html>
+        <head>
+    <link rel="stylesheet" href="/css/styleAdmin.css" />
+    </head>
+    <body>
+        
+<div class="table-container">
+
+    <h2>Gestión de Usuarios</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert success">@TempData["Success"]</div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert error">@TempData["Error"]</div>
+    }
+
+    <table class="admin-table">
+        <thead>
             <tr>
-                <td>@usuario.UsuarioID</td>
-                <td>@usuario.Username</td>
-                <td>@usuario.Email</td>
-                <td>@usuario.Password</td>
-                <td>@usuario.FechaReg</td>
-                <td>@usuario.RolID.NombreRol</td>
-                <td>
-                    @Html.ActionLink("Usuario", "Edit", new { id = usuario.UsuarioID })
-                </td>
-                <td>
-                    <a asp-controller="Usuario" asp-action="Delete" asp-route-id="@usuario.UsuarioID" class="btn btn-danger">
-                        Eliminar
-                    </a>
-                </td>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Fecha</th>
+                <th>Rol</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td>@usuario.UsuarioID</td>
+                    <td>@usuario.Username</td>
+                    <td>@usuario.Email</td>
+                    <td>@usuario.FechaReg.ToString("dd/MM/yyyy")</td>
+                    <td>@usuario.RolID.NombreRol</td>
+
+                    <td class="acciones">
+                        <a href="/Usuario/Edit/@usuario.UsuarioID" class="btn edit">ACTUALIZAR
+                        </a>
+                        <form action="/Usuario/Delete" method="post"
+                              onsubmit="return confirm('¿Eliminar usuario?')">
+                            <input type="hidden" name="id" value="@usuario.UsuarioID" />
+                            <button type="submit" class="btn delete">ELIMINAR</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

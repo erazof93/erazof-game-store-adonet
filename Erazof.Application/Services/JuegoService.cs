@@ -18,6 +18,11 @@ namespace Erazof.Application.Services
             _juegosDalc = new JuegosDALC();
         }
 
+        public Task agregarJuego(int usuarioID, int juegoID)
+        {
+            return _juegosDalc.agregarJuego(usuarioID, juegoID);
+        }
+
         public Task<int> insertarJuego(Juego juego)
         {
             return _juegosDalc.insertarJuego(juego);

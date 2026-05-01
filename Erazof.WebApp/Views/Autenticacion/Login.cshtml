@@ -14,25 +14,6 @@
 
     <h2>Login GamesFull</h2>
 
-    @if (ViewBag.Error != null)
-    {
-        <p style="color:red">@ViewBag.Error</p>
-    }
-
-    @* <form asp-action="Login" method="post">
-        
-        <div>
-            <label>Usuario o Email:</label><br />
-            <input name="UserOrEmail" required />
-        </div>
-        <br />
-        <div>
-            <label>Contraseña:</label><br />
-            <input name="Password" type="password" required />
-        </div>
-        <br />
-        <button type="submit">Entrar</button>
-    </form> *@
 
     <div class="login-box">
         <h2>Iniciar sesión</h2>
@@ -50,6 +31,21 @@
 
                 <a href="/Usuario/Create"><p class="register">¿Desea registrarse?</p></a>
         </form>
+
+            @if (ViewBag.Error != null)
+            {
+                <div style="
+                    margin-top: 15px;
+                    padding: 10px;
+                    background-color: red;
+                    color: white;
+                    border-radius: 5px;
+                    text-align: center;
+                    font-size: 14px;
+                    ">
+                    @ViewBag.Error
+                </div>
+            }
     </div>
 
     </body>

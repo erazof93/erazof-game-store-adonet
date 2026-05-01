@@ -15,6 +15,7 @@ namespace Erazof.Domain
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public DateTime Fechala { get; set; }
+        public string url { get; set; }
         public DateTime FechaCompra { get; set; }
 
 

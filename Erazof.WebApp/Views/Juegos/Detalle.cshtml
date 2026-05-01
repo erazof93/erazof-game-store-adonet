@@ -4,5 +4,46 @@
 @{
 }
 
+@model Erazof.Domain.JuegoDetalle
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/styleDetalle.css" />
+</head>
+<body>
 
+<div class="detalle-container">
 
+    <div class="detalle-card">
+
+        <!-- IMAGEN -->
+        <div class="detalle-img">
+            <img src="@Model.Url" alt="@Model.Titulo" />
+                <p>@Model.Url</p>
+        </div>
+
+        <!-- INFO -->
+        <div class="detalle-info">
+            <h1>@Model.Titulo</h1>
+
+            <p class="generos">@Model.Generos</p>
+
+            <p class="fecha">
+                Lanzamiento: @Model.FechaLanz
+            </p>
+
+            <p class="precio">
+                @Model.Precio
+            </p>
+
+                <form action="/Juegos/Comprar" method="post">
+                    <input type="hidden" name="JuegoID" value="@Model.JuegoID" />
+                    <button type="submit" class="btn-comprar">Comprar</button>
+                </form>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
