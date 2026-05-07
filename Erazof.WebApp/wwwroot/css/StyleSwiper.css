@@ -1,51 +1,66 @@
-﻿
-* {
+﻿* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 
+body {
+    background: radial-gradient(circle at center, #0a1f1a, #021a10);
+    min-height: 100vh;
+    color: #e0ffe0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contenedor-generos {
+    padding: 40px 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
 .padre-section {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 80%;
-    margin: 0 auto;
+    width: 90%;
+    margin: 0 auto 40px;
 }
-
-    .padre-section p {
-        color: #4388a2;
-    }
 
 .section {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 12px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 50, 30, 0.1) 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
 }
-
 
 .cabecera-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: #00ff88;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 10px;
+    margin-bottom: 20px;
 }
 
-/* SWIPER */
+    .cabecera-section p {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    }
+
 .swiper {
-    width: 95%;
-    max-width: 1600px;
+    width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 10px 0;
 }
 
 .swiper-wrapper {
-    padding: 20px 40px;
-    border-radius: 20px;
-    height: 350px;
+    padding: 20px 10px;
+    height: 380px;
 }
 
 .swiper-slide {
@@ -54,37 +69,104 @@
     align-items: center;
 }
 
-
 .prueba {
     position: relative;
-    width: 200px;
-    height: 300px;
+    width: 220px;
+    height: 320px;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    background: linear-gradient(135deg, #0d2d1f 0%, #051510 100%);
 }
 
-    .prueba:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88;
-    }
+.prueba:hover {
+    transform: scale(1.08) translateY(-10px);
+    border-color: #00ff88;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 136, 0.6),
+        0 0 40px rgba(0, 255, 136, 0.3),
+        0 0 60px rgba(0, 255, 136, 0.1);
+}
 
 .pruebaenlace {
     display: block;
     width: 100%;
     height: 100%;
+    text-decoration: none;
 }
 
 .pruebaimg {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 16px;
+    transition: transform 0.4s ease;
 }
 
+.prueba:hover .pruebaimg {
+    transform: scale(1.1);
+}
 
-body {
-    background: radial-gradient(circle at center, #083c42, #021f24);
-    min-height: 100vh;
+/* BOTONES SWIPER */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #00ff88 !important;
+    background: rgba(0, 255, 136, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 255, 136, 0.5);
+    transition: all 0.3s ease;
+}
+
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+        background: rgba(0, 255, 136, 0.2);
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    }
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.2rem !important;
+    font-weight: bold;
+}
+
+/* PAGINACION */
+.swiper-pagination-bullet {
+    background: rgba(0, 255, 136, 0.3) !important;
+    border: 1px solid rgba(0, 255, 136, 0.5) !important;
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #00ff88 !important;
+    box-shadow: 0 0 10px #00ff88;
+}
+
+/* EFECTO NEON */
+.neon-text {
+    color: #00ff88;
+    text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88, 0 0 20px #00ff88;
+}
+
+.neon-border {
+    border: 2px solid #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5), inset 0 0 10px rgba(0, 255, 136, 0.1);
+}
+
+@media (max-width: 768px) {
+    .prueba {
+        width: 160px;
+        height: 240px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+
+    .cabecera-section p {
+        font-size: 1.2rem;
+    }
 }

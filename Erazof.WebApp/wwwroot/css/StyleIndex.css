@@ -1,29 +1,35 @@
-﻿
-/* CONTENEDOR GENERAL */
+﻿/* CONTENEDOR GENERAL */
 .auth-container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: radial-gradient(circle at center, #083c42, #021f24);
-    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at center, #0a1f1a, #021a10);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* TARJETA */
 .auth-card {
-    background: #0b2d36;
-    padding: 40px;
-    border-radius: 20px;
-    width: 380px;
-    box-shadow: 0 0 40px rgba(0,255,200,0.1);
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.08) 0%, rgba(0, 50, 30, 0.15) 100%);
+    padding: 45px;
+    border-radius: 24px;
+    width: 400px;
+    border: 2px solid rgba(0, 255, 136, 0.2);
+    box-shadow: 
+        0 0 40px rgba(0, 255, 136, 0.15),
+        0 20px 50px rgba(0, 0, 0, 0.4);
     animation: fadeIn 0.5s ease;
 }
 
 /* TITULO */
 .auth-title {
     text-align: center;
-    color: white;
-    margin-bottom: 25px;
+    color: #00ff88;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
 }
 
 /* FORM */
@@ -34,86 +40,112 @@
 
 /* GRUPOS */
 .form-group {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 /* INPUT */
 .form-input {
     width: 100%;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid #1bc9c9;
-    background: transparent;
-    color: white;
+    padding: 14px;
+    border: 2px solid rgba(0, 255, 136, 0.3);
+    border-radius: 12px;
+    background: rgba(0, 255, 136, 0.05);
+    color: #e0ffe0;
     outline: none;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    font-size: 1rem;
 }
 
-    .form-input::placeholder {
-        color: #7aaeb5;
-    }
+.form-input::placeholder {
+    color: #6a9a6a;
+}
 
-    .form-input:focus {
-        border-bottom: 2px solid #00ffcc;
-        box-shadow: 0 5px 10px rgba(0,255,200,0.2);
-    }
+.form-input:focus {
+    border-color: #00ff88;
+    box-shadow: 
+        0 0 15px rgba(0, 255, 136, 0.3),
+        inset 0 0 10px rgba(0, 255, 136, 0.05);
+}
 
 /* LABEL */
 .form-label {
-    color: #cfe8ec;
+    color: #00ff88;
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     display: block;
+    font-weight: 600;
 }
 
 /* FILE */
 .form-file {
-    color: #cfe8ec;
+    color: #7fff7f;
+    padding: 10px;
+    background: rgba(0, 255, 136, 0.05);
+    border-radius: 10px;
+    border: 1px dashed rgba(0, 255, 136, 0.3);
 }
 
 /* CHECKBOX */
 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 12px;
 }
 
 .checkbox-item {
     display: flex;
     align-items: center;
-    gap: 5px;
-    color: #cfe8ec;
-    font-size: 13px;
+    gap: 8px;
+    color: #e0ffe0;
+    font-size: 14px;
+    padding: 8px 15px;
+    background: rgba(0, 255, 136, 0.08);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
-    .checkbox-item input {
-        accent-color: #00ffcc;
-    }
+.checkbox-item:hover {
+    background: rgba(0, 255, 136, 0.15);
+    border-color: #00ff88;
+}
+
+.checkbox-item input {
+    accent-color: #00ff88;
+    width: 18px;
+    height: 18px;
+}
 
 /* BOTON */
 .btn-submit {
     width: 100%;
-    padding: 12px;
-    background: #17b26a;
+    padding: 15px;
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
     border: none;
-    border-radius: 8px;
-    color: white;
+    border-radius: 12px;
+    color: #0a1f1a;
     font-weight: bold;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
 }
 
-    .btn-submit:hover {
-        background: #14a05f;
-        box-shadow: 0 5px 20px rgba(23,178,106,0.4);
-        transform: translateY(-2px);
-    }
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 10px 25px rgba(0, 255, 136, 0.4),
+        0 0 40px rgba(0, 255, 136, 0.2);
+}
 
 /* ANIMACION */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(20px);
     }
 
     to {

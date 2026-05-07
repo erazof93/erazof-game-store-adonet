@@ -1,38 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "_Layout";
 }
-
 @model List<Erazof.Domain.BibliotecaUsuario>
 
+<html>
+<head>
+    <link rel="stylesheet" href="/css/styleBiblioteca.css" />
+</head>
+<body>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>UsuarioID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>JuegoID</th>
-            <th>Titulo</th>
-            <th>Precio</th>
-            <th>FechaCompra</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="biblioteca-container">
+    <div class="biblioteca-header">
+        <h2>Biblioteca de Usuario</h2>
+        <p>Todos los juegos comprados</p>
+    </div>
+
+    <div class="biblioteca-grid">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.UserId</td>
-                <td>@item.UserName</td>
-                <td>@item.Email</td>
-                <td>@item.GameID</td>
-                <td>@item.titulo</td>
-                <td>@item.precio</td>
-                <td>@item.FechaCompra</td>
-
-            </tr>
+            <div class="biblioteca-card">
+                <div class="card-image">
+                    <img src="@item.precio" alt="@item.titulo" />
+                </div>
+                <div class="card-info">
+                    <h3>@item.titulo</h3>
+                    <p class="card-user">@item.UserName</p>
+                    <p class="card-precio">$@item.precio</p>
+                    <p class="card-fecha">Comprado: @item.FechaCompra.ToString("dd/MM/yyyy")</p>
+                </div>
+            </div>
         }
-           
-    </tbody>
-</table>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="empty-biblioteca">
+            <h3>No hay juegos en la biblioteca</h3>
+        </div>
+    }
+</div>
+
+</body>
+</html>
